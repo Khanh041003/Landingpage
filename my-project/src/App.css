@@ -5,6 +5,7 @@ body {
   color: #ffffff;
   width: 100%;
   margin: 0;
+  background-size: cover;
   overflow-x: hidden;
 }
 
@@ -19,7 +20,7 @@ body {
 }
 
 .navbar-logo img {
-  height: 40px;
+  height: 70px;
 }
 
 .navbar-menu {
@@ -108,12 +109,66 @@ nav ul {
   display: flex;
   gap: 1.5rem;
 }
+/* About Section */
+.about-section {
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
 
-nav a {
+}
+
+.about-content {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.about-item {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 250px;
+  width: 100%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.about-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Aggregated zk Proof Section */
+.zk-proof-section {
+  padding: 80px 20px;
+}
+
+.zk-proof-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.zk-proof-text {
+  max-width: 500px;
+  text-align: left;
+}
+
+.zk-proof-image img {
+  max-width: 400px;
+  border-radius: 10px;
+}
+/* nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-}
+} */
 /* dashboard */
 
 .left {
