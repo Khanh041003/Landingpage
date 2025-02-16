@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
+import { Connect } from "../components/ModalConnect";
 
 export function Dashboard() {
     const [url, setUrl] = useState("");
-
+    const [connected, setConneted] = useState(false);
+    useEffect(() => {
+        const connect = window.localStorage.getItem("connect");
+        if (connect === "true") {
+            setConneted(true);
+            
+        } else {
+            setConneted(false);
+        }
+    }, []);
+    const [showModal, setShowModal] = useState(false);
     useEffect(() => {
         setUrl(window.location.pathname);
     }, []);
 
     return (
         <div className="grid grid-cols-12 h-screen flex">
-            {/* Cột trái - 1/4 */}
+            {/* Cột trái - 2/12 */}
             <div className="left bg-[#000] col-span-2 text-left">
                 <div className="logo mb-[50px] mt-[50px] flex justify-center">
                     <img src="../../public/img/logo.png" alt="Logo" />
@@ -74,8 +85,51 @@ export function Dashboard() {
                 </div>
             </div>
 
-            {/* Cột phải - 3/4 */}
-            <div className="bg-[#000] col-span-10">right</div>
+            {/* Cột phải - 10/12 */}
+            <div className="bg-[#000] col-span-10">
+                <div className="dashboard-header mt-[70px]">
+                    {connected ? (
+                        <div className="dashboard-nav  flex items-center justify-between p-2 border-1">
+                            <ul className="flex gap-3 items-center">
+                                <li>Referals</li>
+                                <li>Copy Referal Code</li>
+                                <li>Day streak</li>
+                                <li>Claim Reward</li>
+                            </ul>
+                            <button className="btn-connect_btn text-[18px]  text-[#000] bg-black-500 from-yellow-300" onClick={() => {window.localStorage.setItem("connect",false); window.location.reload()}}>Ip code :100093208328</button>
+                        </div>
+                    ) : (
+                        <div className="flex justify-end items-center mr-[24px]">
+                            <button className="btn-connect_btn text-[18px]  w-[250px] h-[50px] text-[#000] bg-black-500 from-yellow-300" onClick={() => { setShowModal(true) }}>Connect Wallet</button>
+                        </div>
+                    )}
+                </div>
+                {/* Trang Dashboard */}
+                <div className="dashboard-main w-full mt-[24px] ml-[24px] flex flex-col  items-center">
+                    {connected ? (
+                        <div className="dashboard-content">
+                            <h1 className="text-[20px]">Dashboard</h1>
+                            <p>Welcome! Your wallet is connected.</p>
+                        </div>
+                    ) : (
+                        <div className="announcement bg-[#3d3d3a] w-[400px] h-[300px] rounded-xl flex flex-col items-center justify-around">
+                            <div className="flex flex-col items-center gap-3">
+                                <h1 className="text-[20px]">Connect Wallet</h1>
+                                <p>Please connect your wallet to continue</p>
+                            </div>
+                            <button
+                                className="bg-blue-500 text-[#000] w-[300px]"
+                                onClick={() => setShowModal(true)}
+                            >
+                                Connect Wallet
+                            </button>
+                        </div>
+                    )}
+
+                    <Connect show={showModal} onClose={() => setShowModal(false)} />
+
+                </div>
+            </div>
         </div>
     );
 }
