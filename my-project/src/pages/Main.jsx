@@ -1,4 +1,32 @@
+import { useEffect, useState } from "react";
+
 export function MainPage() {
+    const [position, setPosition] = useState("25%");
+  const [rotationE, setRotationE] = useState(0);
+  const [rotationB, setRotationB] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prev) => {
+        let newPos = parseFloat(prev) + 1;
+        if (newPos >= 75) {
+          return "25%";
+        }
+        return `${newPos}%`;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const rotateInterval = setInterval(() => {
+      setRotationE((prev) => (prev + 2) % 360);
+      setRotationB((prev) => (prev - 2) % 360);
+    }, 50);
+
+    return () => clearInterval(rotateInterval);
+  }, []);
     return (
         <>
             <div className="App">
@@ -128,6 +156,42 @@ export function MainPage() {
                         </p>
                         </div>
                     </div>
+                    {/* section4 */}
+                    <div className="relative flex items-center justify-center min-h-screen bg-black">
+                    {/* Background lines and dots */}
+                    <div className="absolute inset-0">
+                        <div className="grid grid-cols-2 h-full">
+                        <div className="relative flex items-center justify-end pr-10 mr-20">
+                            <div className="relative w-70 h-70 flex items-center justify-center">
+                            <div
+                                className="absolute inset-0 border-4 border-dashed border-white rounded-full "
+                                style={{ transform: `rotate(${rotationE}deg)` }}
+                            ></div>
+                            <span className="text-6xl font-bold text-white z-10">E</span>
+                            </div>
+                        </div>
+                        <div className="relative flex items-center justify-start pl-10">
+                            <div className="relative w-32 h-32 flex items-center justify-center ml-40">
+                            <div
+                                className="absolute inset-0 border-4 border-dashed border-white rounded-full"
+                                style={{ transform: `rotate(${rotationB}deg)` }}
+                            ></div>
+                            <span className="text-4xl font-bold text-white z-10">₿</span>
+                            </div>
+                        </div>
+                        </div>
+                        {/* Connecting line */}
+                        <div className="absolute top-1/2 left-2/5 w-1/4 border-t-1 border-dashed border-gray-400" />
+                        {/* Moving Label */}
+                        <div
+                        className="absolute top-1/2 bg-gray-800 text-white px-4 py-2 rounded-lg"
+                        style={{ left: position, transform: "translateY(-50%)" }}
+                        >
+                        Single ZK proofs
+                        </div>
+                    </div>
+                    </div>
+
                     <svg className="svg-acctive" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
                         <rect className="mouse" x="0" y="0" width="800" height="300"/>
                         <polygon className="turn-01 darkestTulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
