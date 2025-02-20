@@ -16,9 +16,9 @@ export function MainPage() {
                     </ul>
                     <a
                         href="/dashboard"
-                        className=" flex items-center justify-center rounded-3xl transition-all  hover:bg-[#3e3c3c] cursor-pointer"
+                        className=" flex items-center justify-center rounded-3xl transition-all cursor-pointer"
                     >
-                        <div className="h-[50px] text-white flex justify-center items-center p-2 border border-[#ccc] duration-300 cursor-pointer rounded-2xl p-4">
+                        <div className="h-[50px] text-white flex justify-center items-center p-2 border border-[#ccc] duration-300 cursor-pointer rounded-2xl p-4 hover:bg-[#3e3c3c]">
                             Run a light node
                         </div>
                     </a>
@@ -106,48 +106,43 @@ export function MainPage() {
                         </div>
                         </div>
                     </section>
-                    {/* Phần 3 - Aggregated zk Proof */}
-                    <section className="zk-proof-section" id="zk-proof">
-                        <div className="zk-proof-container">
-                        <div className="zk-proof-text">
-                            <h2>Aggregated zk Proof</h2>
-                            <p>
-                            LayerEdge uses zero-knowledge proofs (zk-proofs) to aggregate multiple transactions into a single proof, ensuring efficiency and privacy.
+                    
+                    {/* section3 */}
+                    <div className="flex flex-col items-center mt-60 space-y-10">
+                        <div className=" bg-black text-white p-10 rounded-[20px] shadow-lg border-2 border-white w-[600px] text-center">
+                        <div className="flex justify-center items-center space-x-2">
+                            <h2 className="text-lg font-semibold">LayerEdge</h2>
+                            <p className="text-sm bg-gray-800 inline-block px-2 py-1 rounded-full">
+                            Verification Layer
                             </p>
                         </div>
-                        <div className="zk-proof-image">
-                            <img src="zk-proof-diagram.png" alt="zk Proof Diagram" />
+                        <div className=" mt-4 bg-gradient-to-b from-gray-300 to-gray-100 text-black px-6 py-4 rounded-lg inline-block text-center border border-gray-400 shadow-lg">
+                            <p className="text-2xl font-bold">Aggregated zk proof</p>
+                            <p className="text-sm text-gray-600 mt-1">PROOF AGGREGATION</p>
                         </div>
                         </div>
-                    </section>
-                    {/* Phần tính năng */}
-                    <section className="features-section" id="features">
-                        <h2>Features</h2>
-                        <div className="feature-grid">
-                            <div className="feature-item">
-                                <h3>Scalability</h3>
-                                <p>Enabling high throughput with minimal on-chain footprint.</p>
-                            </div>
-                            <div className="feature-item">
-                                <h3>Security</h3>
-                                <p>Leverages Bitcoin’s security model for trust-minimized execution.</p>
-                            </div>
-                            <div className="feature-item">
-                                <h3>Efficiency</h3>
-                                <p>Optimized resource allocation for seamless integration.</p>
-                            </div>
-                            <div className="feature-item">
-                                <h3>Efficiency</h3>
-                                <p>Optimized resource allocation for seamless integration.</p>
-                            </div>
+                        <div className=" bg-black text-white p-10 rounded-[20px] shadow-lg border-2 border-white w-[600px] text-center mt-10">
+                        <h2 className="text-2xl font-bold">Bitcoin Network</h2>
+                        <p className="text-sm text-gray-400 mt-2">
+                            Aggregated Proof Verification on Bitcoin
+                        </p>
                         </div>
-                    </section>
+                    </div>
+                    <svg className="svg-acctive" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+                        <rect className="mouse" x="0" y="0" width="800" height="300"/>
+                        <polygon className="turn-01 darkestTulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
+                        <polygon className="turn-02 darkTulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
+                        <polygon className="turn-03 tulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
+                        <polygon className="turn-04 paleTulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
+                        <polygon className="turn-05 palestTulip" points="400, 280, 310, 150, 400, 20, 490, 150"/>
+                    </svg>
 
                     {/* Phần hệ sinh thái */}
                     <section className="ecosystem-section" id="ecosystem">
                         <h2>Our Ecosystem</h2>
                         <p>Bringing together developers, enterprises, and Bitcoin enthusiasts.</p>
                     </section>
+                    
                     {/* Footer */}
                     <footer className="footer">
                         <p>© 2025 LayerEdge. All rights reserved.</p>
