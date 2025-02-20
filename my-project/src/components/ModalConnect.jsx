@@ -21,11 +21,11 @@ console.log(connected);
                 </div>
                 {/* Content */}
                 <div className=" grid grid-cols-12 flex h-full ">
-                    <div className="col-span-5 bg-blue-200 h-full rounded-xl">
+                    <div className="col-span-5  h-full rounded-xl">
                         <h3 className="ml-[24px] mt-[24px] text-[#000] font-bold text-[23px]">Kết nối 1 chiếc ví</h3>
                         <div className="list-wallet mb-[24px] ">
                             <h3 className="ml-[24px]  text-[#6d6d6b] font-bold ">Đề xuất</h3>
-                            <ul className="text-[#000] font-bold text-[18px] ml-[24px] m-2 flex flex-col gap-2 text-left">
+                            <ul className=" wallet-list text-[#000] font-bold text-[18px] ml-[24px] m-2 flex flex-col gap-2 text-left p-3">
                                 <li>Rainbow</li>
                                 <li>MetaMask</li>
                                 <li>OKX Wallet</li>

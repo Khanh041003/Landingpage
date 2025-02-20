@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react";
-import { Connect } from "../components/ModalConnect";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
 
 export function Dashboard() {
     const [url, setUrl] = useState("");
-    const [connected, setConneted] = useState(false);
-    useEffect(() => {
-        const connect = window.localStorage.getItem("connect");
-        if (connect === "true") {
-            setConneted(true);
-            
-        } else {
-            setConneted(false);
-        }
-    }, []);
-    const [showModal, setShowModal] = useState(false);
+    const { isConnected } = useAccount();
     useEffect(() => {
         setUrl(window.location.pathname);
     }, []);
+    <ConnectButton.Custom>
+        {({ account, chain, openConnectModal, openAccountModal, mounted }) => {
+            const connected = mounted && account && chain;
 
+            return (
+                <button
+                    onClick={connected ? openAccountModal : openConnectModal}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+                >
+                    {connected ? `Connected: ${account.displayName}` : "Connect Wallet"}
+                </button>
+            );
+        }}
+    </ConnectButton.Custom>
     return (
         <div className="grid grid-cols-12 h-screen flex">
             {/* Cột trái - 2/12 */}
             <div className="left bg-[#000] col-span-2 text-left">
                 <div className="logo mb-[50px] mt-[50px] flex justify-center">
-                    <img src="../../public/img/logo.png" alt="Logo" />
+                    <img src="../../img/logo.png" alt="Logo" />
                 </div>
                 <div className="menu-control mb-[70px] ml-[30px]">
                     <ul className="bg-black flex flex-col gap-4 text-[18px]">
@@ -35,25 +39,29 @@ export function Dashboard() {
                             <span>Dashboard</span>
                         </li>
                         <li
-                            className={`flex items-center justify-between cursor-pointer ${url === "/tasks" ? "active" : ""
-                                }`}
+                            className={`flex items-center justify-between ${url === "/tasks" ? "active" : ""
+                                } ${!isConnected ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                            onClick={(e) => !isConnected && e.preventDefault()}
                         >
                             <div className="flex items-center gap-2">
                                 <i className="fa-solid fa-list-check"></i>
                                 <span>Tasks</span>
                             </div>
-                            <i className="fa-solid fa-lock text-gray-400"></i>
+                            {!isConnected && <i className="fa-solid fa-lock text-gray-400"></i>}
                         </li>
+
                         <li
-                            className={`flex items-center justify-between cursor-pointer ${url === "/proofs" ? "active" : ""
-                                }`}
+                            className={`flex items-center justify-between ${url === "/proofs" ? "active" : ""
+                                } ${!isConnected ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                            onClick={(e) => !isConnected && e.preventDefault()}
                         >
                             <div className="flex items-center gap-2">
                                 <i className="fa-solid fa-building-lock"></i>
                                 <span>Proofs</span>
                             </div>
-                            <i className="fa-solid fa-lock text-gray-400"></i>
+                            {!isConnected && <i className="fa-solid fa-lock text-gray-400"></i>}
                         </li>
+
                         <li
                             className={`flex items-center gap-2 cursor-pointer ${url === "/referrals" ? "active" : ""
                                 }`}
@@ -75,7 +83,7 @@ export function Dashboard() {
                                 <span>Explorer</span>
                             </div>
                         </li>
-                        <li className="flex items-center justify-between cursor-pointer hover:text-gray-300">
+                        <li className="flex items-center justify-between cursor-pointer hover:text-gray-300" onClick={() => { window.location.href = "/" }}>
                             <div className="flex items-center gap-2">
                                 <i className="fa-solid fa-link"></i>
                                 <span>Website</span>
@@ -88,25 +96,38 @@ export function Dashboard() {
             {/* Cột phải - 10/12 */}
             <div className="bg-[#000] col-span-10">
                 <div className="dashboard-header mt-[70px]">
-                    {connected ? (
-                        <div className="dashboard-nav  flex items-center justify-between p-2 border-1">
-                            <ul className="flex gap-3 items-center">
-                                <li>Referals</li>
-                                <li>Copy Referal Code</li>
-                                <li>Day streak</li>
-                                <li>Claim Reward</li>
+                    {isConnected ? (
+                        <div className="flex items-center justify-between p-2 border-1 rounded-xl border-[#3d3d3a]">
+                            <ul className="dashboard-nav flex gap-4 items-center">
+                                <div className="flex  w-[300px] p-3 rounded-lg border border-[#9d9d8f] shadow-md transition-all hover:shadow-lg gap-2">
+                                    <li className="flex items-center gap-2 font-semibold">
+                                        <i className="fa-solid fa-users text-blue-500"></i> Referals
+                                    </li>
+                                    <li className="text-blue-400 cursor-pointer hover:underline transition-all">
+                                        - Copy Referral Code
+                                    </li>
+                                </div>
+
+                                <div className="flex  w-[300px] p-3 rounded-lg border border-[#9d9d8f] shadow-md transition-all hover:shadow-lg gap-2">
+                                    <li className="flex items-center gap-2 font-semibold">
+                                        <i className="fa-solid fa-fire text-red-500"></i> Day streak
+                                    </li>
+                                    <li className="flex items-center gap-2 font-semibold cursor-pointer hover:text-yellow-500 transition-all">
+                                        <i className="fa-solid fa-gift text-yellow-400"></i> Claim Reward
+                                    </li>
+                                </div>
                             </ul>
-                            <button className="btn-connect_btn text-[18px]  text-[#000] bg-black-500 from-yellow-300" onClick={() => {window.localStorage.setItem("connect",false); window.location.reload()}}>Ip code :100093208328</button>
+                            <ConnectButton />
                         </div>
                     ) : (
                         <div className="flex justify-end items-center mr-[24px]">
-                            <button className="btn-connect_btn text-[18px]  w-[250px] h-[50px] text-[#000] bg-black-500 from-yellow-300" onClick={() => { setShowModal(true) }}>Connect Wallet</button>
+                            {/* <ConnectButton label="Connect Wallet" /> */}
                         </div>
                     )}
                 </div>
                 {/* Trang Dashboard */}
                 <div className="dashboard-main w-full mt-[24px] ml-[24px] flex flex-col  items-center">
-                    {connected ? (
+                    {isConnected ? (
                         <div className="dashboard-content">
                             <h1 className="text-[20px]">Dashboard</h1>
                             <p>Welcome! Your wallet is connected.</p>
@@ -117,17 +138,9 @@ export function Dashboard() {
                                 <h1 className="text-[20px]">Connect Wallet</h1>
                                 <p>Please connect your wallet to continue</p>
                             </div>
-                            <button
-                                className="bg-blue-500 text-[#000] w-[300px]"
-                                onClick={() => setShowModal(true)}
-                            >
-                                Connect Wallet
-                            </button>
+                            <ConnectButton />
                         </div>
                     )}
-
-                    <Connect show={showModal} onClose={() => setShowModal(false)} />
-
                 </div>
             </div>
         </div>
