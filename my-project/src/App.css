@@ -8,6 +8,9 @@ body {
   background-size: cover;
   overflow-x: hidden;
 }
+html, body {
+  overflow-x: hidden;
+}
 
 .navbar {
   display: flex;
@@ -36,7 +39,9 @@ body {
   font-weight: 500;
   transition: color 0.3s;
 }
-
+.navbar-menu a{
+  color: #fff;
+}
 .navbar-menu li a:hover {
   color: #FFD700;
 }
@@ -120,10 +125,7 @@ nav ul {
   background-size: cover;
   height: 100vh; /* Chiều cao full màn hình */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white; /* Chữ trắng để dễ nhìn */
-  text-align: center;
+  color: #fff;
 
 }
 
