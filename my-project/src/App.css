@@ -8,9 +8,6 @@ body {
   background-size: cover;
   overflow-x: hidden;
 }
-html, body {
-  overflow-x: hidden;
-}
 
 .navbar {
   display: flex;
@@ -39,9 +36,7 @@ html, body {
   font-weight: 500;
   transition: color 0.3s;
 }
-.navbar-menu a{
-  color: #fff;
-}
+
 .navbar-menu li a:hover {
   color: #FFD700;
 }
@@ -125,7 +120,10 @@ nav ul {
   background-size: cover;
   height: 100vh; /* Chiều cao full màn hình */
   display: flex;
-  color: #fff;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Chữ trắng để dễ nhìn */
+  text-align: center;
 
 }
 
@@ -256,12 +254,3 @@ nav ul {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(900deg);}
 }
-/* modal-connnect */
-.wallet-list li:hover {
-  cursor: pointer;
-  background-color: rgba(13, 47, 198, 0.1);
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
-  box-shadow: 4px 0 10px rgba(255, 255, 255, 0.1);
-}
-/* dashboard */
