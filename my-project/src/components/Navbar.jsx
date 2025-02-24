@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const Navbar = () => {
+export function Navbar () {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -61,4 +61,3 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
