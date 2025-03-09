@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/footer";
 
 export function MainPage() {
     const [position, setPosition] = useState("25%");
@@ -200,11 +201,7 @@ export function MainPage() {
                         <h2>Our Ecosystem</h2>
                         <p>Bringing together developers, enterprises, and Bitcoin enthusiasts.</p>
                     </section>
-
-                    {/* Footer */}
-                    <footer className="footer text-white">
-                        <p>© 2025 LayerEdge. All rights reserved.</p>
-                    </footer>
+                    <Footer/>
                 </div>
             </div>
         </>
