@@ -44,12 +44,12 @@ export function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a href="#ecosystem" className="hover:text-gray-400">
+                  <a href="/ecosystem" className="hover:text-gray-400">
                     Ecosystem
                   </a>
                 </li>
                 <li>
-                  <a href="#Explore" className="hover:text-gray-400">
+                  <a href="/Explore" className="hover:text-gray-400">
                     Explore
                   </a>
                 </li>
@@ -79,12 +79,12 @@ export function Navbar() {
               </a>
             </li>
             <li>
-              <a href="#ecosystem" className="hover:text-gray-400">
+              <a href="/ecosystem" className="hover:text-gray-400">
                 Ecosystem
               </a>
             </li>
             <li>
-              <a href="#Explore" className="hover:text-gray-400">
+              <a href="/explore" className="hover:text-gray-400">
               Explore
               </a>
             </li>
