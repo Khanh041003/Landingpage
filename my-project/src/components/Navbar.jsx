@@ -20,7 +20,9 @@ export function Navbar() {
       {isMobile ? (
         // Mobile Navbar
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <a href="/">
           <img src="/img/logo.png" alt="LayerEdge Logo" className="w-24" />
+          </a>
           <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <XMarkIcon className="w-6 h-6" />
@@ -34,12 +36,12 @@ export function Navbar() {
             <div className="absolute top-28 left-0 w-full bg-black/80 text-white">
               <ul className="navbar-menu flex flex-col items-center py-4 space-y-4">
                 <li>
-                  <a href="#Docs" className="hover:text-gray-400">
+                  <a href="/docs" className="hover:text-gray-400">
                     Docs
                   </a>
                 </li>
                 <li>
-                  <a href="#Blog" className="hover:text-gray-400">
+                  <a href="/blog" className="hover:text-gray-400">
                     Blog
                   </a>
                 </li>
@@ -66,15 +68,17 @@ export function Navbar() {
       ) : (
         // Desktop Navbar
         <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+          <a href="/">
           <img src="/img/logo.png" alt="LayerEdge Logo" className="w-50" />
+          </a>
           <ul className="navbar-menu flex space-x-6">
             <li>
-              <a href="/Docs" className="hover:text-gray-400">
+              <a href="/docs" className="hover:text-gray-400">
               Docs
               </a>
             </li>
             <li>
-              <a href="#Blog" className="hover:text-gray-400">
+              <a href="/blog" className="hover:text-gray-400">
               Blog
               </a>
             </li>

@@ -1,18 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import { RouterPage } from './components/router';
 import '@rainbow-me/rainbowkit/styles.css';
-import { 
-  getDefaultConfig, 
-  RainbowKitProvider 
-} from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { 
-  mainnet, polygon, optimism, arbitrum, base 
-} from 'wagmi/chains';
-import { 
-  QueryClientProvider, 
-  QueryClient 
-} from "@tanstack/react-query";
+import { mainnet, polygon, optimism, arbitrum, base } from 'wagmi/chains';
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 // ✅ Cấu hình RainbowKit và Wagmi
 const config = getDefaultConfig({
@@ -29,7 +22,9 @@ function App() {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <RouterPage />
+          <BrowserRouter>
+            <RouterPage />
+          </BrowserRouter>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

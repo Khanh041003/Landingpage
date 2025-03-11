@@ -1,5 +1,5 @@
 
-function BlogIndex() {
+function Blog() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       {/* Header */}
@@ -56,4 +56,4 @@ function BlogIndex() {
   );
 }
 
-export default BlogIndex;
+export default Blog;

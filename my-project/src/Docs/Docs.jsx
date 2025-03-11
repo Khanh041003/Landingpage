@@ -2,11 +2,10 @@ import Sidebar from '../components/Sidebar';
 import Content from '../components/Maincontent';
 import SidebarRight from '../components/SidebarRight';
 
-function App() {
-
+export function Docs() {
   return (
     <div>
-      <div className='flex '>
+      <div className='flex'>
       <h1 className="text-x1 font-semibold mb-4" style={{ color: '#000000' }}>
                             LayerEdge
                             </h1>
@@ -47,5 +46,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
