@@ -1,41 +1,109 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Navbar } from "../components/Navbar";
 
+
 export function MainPage() {
-    const [position, setPosition] = useState("25%");
-    const [rotationE, setRotationE] = useState(0);
-    const [rotationB, setRotationB] = useState(0);
+    
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setPosition((prev) => {
-                let newPos = parseFloat(prev) + 1;
-                if (newPos >= 75) {
-                    return "25%";
-                }
-                return `${newPos}%`;
-            });
-        }, 100);
+    const newsItems = [
+        {
+          id: 1,
+          time: "1:07:04 AM",
+          date: "March 1, 2025",
+          description: "February Recap: Building, Shipping, and Scaling LayerEdge.",
+        },
+        {
+          id: 2,
+          time: "3:46:22 AM",
+          date: "February 15, 2025",
+          description: "LayerEdge joins forces with leading tech companies.",
+        },
+        {
+          id: 3,
+          time: "11:47:57 PM",
+          date: "January 30, 2025",
+          description: "Enhanced security protocols implemented.",
+        },
+      ];
+    const [activeTab, setActiveTab] = useState('all');
 
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        const rotateInterval = setInterval(() => {
-            setRotationE((prev) => (prev + 2) % 360);
-            setRotationB((prev) => (prev - 2) % 360);
-        }, 50);
-
-        return () => clearInterval(rotateInterval);
-    }, []);
+  const content = {
+    all: [
+      {
+        title: 'Fast Verification',
+        description: 'Verify proofs in milliseconds, enabling scalable decentralized applications across multiple chains.',
+      },
+      {
+        title: 'Affordable Settlement',
+        description: 'Reduce verification costs dramatically, making blockchain innovation accessible to all.',
+      },
+      {
+        title: 'Secure by Bitcoin',
+        description: 'Utilize Bitcoin’s unparalleled security for trustless proof verification.',
+      },
+      {
+        title: 'Fermah',
+        description: 'Fermah is optimized for cheap, fast, and reliable ZK proof generation. It is architected to make ZKPs the default substrate for all computation.',
+      },
+      {
+        title: 'Babylon',
+        description: 'A revolutionary staking protocol for Bitcoin, allowing BTC holders to earn yields by securing Proof of Stake (PoS) blockchains trustlessly.',
+      },
+    ],
+    bitcoin: [
+      {
+        title: 'Bitcoin Speed',
+        description: 'Leverage Bitcoin’s network for rapid proof verification with minimal latency.',
+      },
+      {
+        title: 'Cost Reduction',
+        description: 'Slash settlement costs by integrating with Bitcoin’s efficient infrastructure.',
+      },
+      {
+        title: 'Bitcoin Trust',
+        description: 'Rely on Bitcoin’s proven security model for dependable proof validation.',
+      },
+    ],
+    ethereum: [
+      {
+        title: 'Ethereum Compatibility',
+        description: 'Seamlessly verify proofs for Ethereum applications with high efficiency.',
+      },
+      {
+        title: 'Scalable Ethereum',
+        description: 'Enable cost-effective scaling for Ethereum’s ecosystem with optimized verification.',
+      },
+      {
+        title: 'Cross-Chain Bridge',
+        description: 'Connect Ethereum and Bitcoin securely with interoperable proof solutions.',
+      },
+    ],
+    Provers: [
+        {
+          title: 'Ethereum Compatibility',
+          description: 'Seamlessly verify proofs for Ethereum applications with high efficiency.',
+        },
+        {
+          title: 'Scalable Ethereum',
+          description: 'Enable cost-effective scaling for Ethereum’s ecosystem with optimized verification.',
+        },
+        {
+          title: 'Cross-Chain Bridge',
+          description: 'Connect Ethereum and Bitcoin securely with interoperable proof solutions.',
+        },
+      ],
+    
+    
+  };
+    
     return (
         <>
-            <div className="App">
+          <div className="App">
                 {/* Menu điều hướng */}
                 <div className="relative w-full h-screen">
                     {/* Video Background */}
                     <video
-                        className="absolute top-0 left-0 w-full h-full object-cover"
+                        className="absolute top-0 left-0 w-full h-full object-cover "
                         autoPlay
                         loop
                         muted
@@ -44,27 +112,9 @@ export function MainPage() {
                         <source src="https://www.layeredge.io/video/home-hero.mp4" type="video/mp4" />
                         Trình duyệt của bạn không hỗ trợ video.
                     </video>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none "></div>
+                    
 
-                    {/* <nav className="navbar text-[18px] a">
-                        <div className="navbar-logo">
-                            <img src="../../public/img/logo.png" alt="LayerEdge Logo" />
-                        </div>
-                        <ul className="navbar-menu">
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#ecosystem">Ecosystem</a></li>
-                            <li><a href="#docs">Docs</a></li>
-                            <li><a href="#blog">Blog</a></li>
-                        </ul>
-                        <a
-                            href="/dashboard"
-                            className=" flex items-center justify-center rounded-3xl transition-all cursor-pointer"
-                        >
-                            <div className="h-[50px] text-white flex justify-center items-center p-2 border border-[#ccc] duration-300 cursor-pointer rounded-2xl p-4 hover:bg-[#3e3c3c]">
-                                Run a light node
-                            </div>
-                        </a>
-                    </nav> */}
 
                     <header className="hero-section absolute" id="home">
                         <p className='text-[20px]' >Powering trustless settlement vs trust-minized verification on Bitcoin at 99% lower cost for all Layers & Apps</p>
@@ -74,57 +124,90 @@ export function MainPage() {
 
                         <button className="cta-button">Get Started</button>
                     </header>
+                    
                 </div>
                 <Navbar />
                 <div className="main-content min-h-screen flex flex-col items-center justify-center text-gray-900">
                     {/* Phần 2 của trang chính - Giới thiệu LayerEdge */}
-                    <section className="about-section px-4" id="about">
-                        <div className="about-container max-w-6xl mx-auto text-center">
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-                                Powering Trust-Minimized
-                            </h1>
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-                                Settlement on Bitcoin
-                            </h1>
-                            <h2 className="mt-6 text-xl font-semibold">Why LayerEdge?</h2>
-                            <div className="about-container-text mt-4 text-[#fff]">
-                                <p className="about-text break-words text-gray-700 text-white">
-                                    LayerEdge opens door for anyone to tap into Bitcoin’s security, while taking only up to 1% of the Bitcoin blockspace they would have taken building directly without LayerEdge.
-                                </p>
+                    
+
+                    <section className=" bg-[#000000] text-white py-12 md:py-20 px-4 sm:px-6 md:px-8 lg:px-16">
+                        <div className=" mx-auto text-center">
+                            {/* Tiêu đề */}
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold  tracking-tight text-[#FFFFFF] transition-all duration-500 ease-in-out ">
+                            Powering Trust-Minimized
+                            </h2>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#FFFFFF] transition-all duration-500 ease-in-out ">
+                            Settlement on Bitcoin
+                            </h2>
+
+                            {/* Mô tả */}
+                            <p className="text-base sm:text-lg md:text-xl text-[#A1A1A1] mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+                            LayerEdge provides rapid, low-cost verification of zero-knowledge and validity proofs, 
+                            driving scalable and permissionless innovation on Bitcoin, Ethereum, and other chains.
+                            </p>
+
+                            {/* Các nút */}
+                            <div className="flex text-[#000000]  justify-center gap-2  mb-10 ">
+                            <button
+                                onClick={() => setActiveTab('all')}
+                                className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
+                                activeTab === 'all'
+                                    ? 'bg-[#0D0D0D] text-[#000000] shadow-lg'
+                                    : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
+                                }`}
+                            >
+                                All
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('bitcoin')}
+                                className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
+                                activeTab === 'bitcoin'
+                                    ? 'bg-[#0D0D0D] text-[#000000] shadow-lg'
+                                    : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
+                                }`}
+                            >
+                                Chains
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('ethereum')}
+                                className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
+                                activeTab === 'ethereum'
+                                    ? 'bg-[#2463EB] text-[#000000] shadow-lg'
+                                    : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
+                                }`}
+                            >
+                                Protocol Infra
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('Provers')}
+                                className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
+                                activeTab === 'Provers'
+                                    ? 'bg-[#2463EB] text-[#000000] shadow-lg'
+                                    : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
+                                }`}
+                            >
+                                ZK Provers
+                            </button>
                             </div>
-                            <div className="about-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Decentralized</h3>
-                                    <p className="text-sm text-gray-600">Ensures trust-minimized, permissionless operations.</p>
+
+                            {/* Các cột */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 ">
+                            {content[activeTab].map((item, index) => (
+                                <div
+                                key={index}
+                                className="bg-[#000000] p-6 sm:p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border hover:scale-105 hover:shadow-x1 "
+                                >
+                                <h3 className="text-lg sm:text-xl font-semibold mb-4 text-[#FFFFFF]">{item.title}</h3>
+                                <p className="text-sm sm:text-base text-[#A1A1A1] leading-relaxed">{item.description}</p>
                                 </div>
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Interoperable</h3>
-                                    <p className="text-sm text-gray-600">Seamlessly connects with existing blockchain infrastructures.</p>
-                                </div>
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Future-Proof</h3>
-                                    <p className="text-sm text-gray-600">Designed for long-term sustainability and growth.</p>
-                                </div>
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Scalable</h3>
-                                    <p className="text-sm text-gray-600">Optimized for high transaction throughput.</p>
-                                </div>
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Secure</h3>
-                                    <p className="text-sm text-gray-600">Uses robust cryptographic principles.</p>
-                                </div>
-                                <div className="about-item bg-gray-100 p-4 rounded-lg shadow-md">
-                                    <h3 className="text-lg font-semibold">Efficient</h3>
-                                    <p className="text-sm text-gray-600">Minimizes on-chain footprint.</p>
-                                </div>
+                            ))}
                             </div>
-                            View all
                         </div>
-                    </section>
-
-
+                        </section>
                     {/* section3 */}
-                    <div className="flex flex-col items-center mt-100 sm-mt-[100px] space-y-10 px-4">
+                    
+                    <div className="flex flex-col items-center sm-mt-[100px] space-y-10 px-4">
                         <div className="bg-black text-white p-10 rounded-[20px] shadow-lg border-2 border-white max-w-[600px] w-full text-center">
                             <div className="flex justify-center items-center space-x-2">
                                 <h2 className="text-lg font-semibold">LayerEdge</h2>
@@ -144,69 +227,121 @@ export function MainPage() {
                             </p>
                         </div>
                     </div>
-                    {/* section4 */}
-                    <div className="relative flex flex-col sm:flex-row items-center justify-center min-h-screen bg-black">
-                        {/* Background lines and dots */}
-                        <div className="absolute inset-0">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 h-full">
-                                {/* Chữ E */}
-                                <div className="relative flex items-center justify-center sm:justify-end pr-10 sm:mr-20 sm:pr-10">
-                                    <div className="relative w-32 h-32 sm:w-70 sm:h-70 flex items-center justify-center">
-                                        <div
-                                            className="absolute inset-0 border-4 border-dashed border-white rounded-full"
-                                            style={{ transform: `rotate(${rotationE}deg)` }}
-                                        ></div>
-                                        <span className="text-4xl sm:text-6xl font-bold text-white z-10">E</span>
-                                    </div>
-                                </div>
-
-                                {/* Chữ ₿ */}
-                                <div className="relative flex items-center justify-center sm:justify-start pl-10">
-                                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center sm:ml-40">
-                                        <div
-                                            className="absolute inset-0 border-4 border-dashed border-white rounded-full"
-                                            style={{ transform: `rotate(${rotationB}deg)` }}
-                                        ></div>
-                                        <span className="text-3xl sm:text-4xl font-bold text-white z-10">₿</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Connecting line */}
-                            <div className="absolute top-1/2 left-1/4 sm:left-2/5 w-1/2 sm:w-1/4 border-t-1 border-dashed border-gray-400" />
-
-                            {/* Moving Label */}
-                            <div
-                                className="absolute top-1/2 bg-gray-800 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-lg text-sm sm:text-base"
-                                style={{ left: position, transform: "translateY(-50%)" }}
-                            >
-                                Single ZK proofs
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <svg className="svg-acctive" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
-                        <rect className="mouse" x="0" y="0" width="800" height="300" />
-                        <polygon className="turn-01 darkestTulip" points="400, 280, 310, 150, 400, 20, 490, 150" />
-                        <polygon className="turn-02 darkTulip" points="400, 280, 310, 150, 400, 20, 490, 150" />
-                        <polygon className="turn-03 tulip" points="400, 280, 310, 150, 400, 20, 490, 150" />
-                        <polygon className="turn-04 paleTulip" points="400, 280, 310, 150, 400, 20, 490, 150" />
-                        <polygon className="turn-05 palestTulip" points="400, 280, 310, 150, 400, 20, 490, 150" />
-                    </svg>
-
-                    {/* Phần hệ sinh thái */}
-                    <section className="ecosystem-section text-white" id="ecosystem">
-                        <h2>Our Ecosystem</h2>
-                        <p>Bringing together developers, enterprises, and Bitcoin enthusiasts.</p>
-                    </section>
-
-                    {/* Footer */}
-                    <footer className="footer text-white">
-                        <p>© 2025 LayerEdge. All rights reserved.</p>
-                    </footer>
+                    
                 </div>
             </div>
+
+            <section className="py-12 bg-[#000000]">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 className="text-3xl font-bold text-white-900 mb-8">What s New</h1>
+                
+                <div className="overflow-x-auto">
+                  <table className="min-w-full bg-[#000000] rounded-lg shadow-md border-gray-300 mt-20 mb-30">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                      {newsItems.map((item) => (
+                        <tr
+                          key={item.id}
+                          className="border--collapse transition-colors duration-200"
+                        >
+                          
+                          <td className="py-6 px-6 text-gray-600 border-gray-300">
+                            {item.date}<br></br>
+                            {item.time}
+                          </td>
+                          <td className="py-4 px-6 sm:text-2xl md:text-3x1 text-gray-1000">
+                            {item.description}
+                          </td>
+                          <td className="py-4 px-6 text-gray-900 font-medium">
+                            <button className="bg-black"> 
+                                Learn More
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <footer className="bg-gray-900" style={{ backgroundColor: '#000000' }}>
+                    <div className="max-w-6xl mx-auto py-10 px-4 md:px-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                        {/* Logo and Description */}
+                        <div>
+                            <h1 className="text-x1 font-semibold mb-4" style={{ color: '#ffffff' }}>
+                            LayerEdge
+                            </h1>
+                            <p className="text-sm" style={{ color: '#9CA3AF' }}>
+                            Security Layer on Bitcoin.
+                            </p>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div>
+                            <h4 className="text-lg font-semibold mb-4" style={{ color: '#ffffff' }}>
+                            Explore
+                            </h4>
+                            <ul className="space-y-2">
+                            <li>
+                                <a href="#home" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Whitepaper
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#features" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Github
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#how-it-works" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Docs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Bitcoin Testnet Explorer
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
+
+                        {/* Resources */}
+                        <div>
+                            <h4 className="text-lg font-semibold mb-4" style={{ color: '#ffffff' }}>
+                            Resources
+                            </h4>
+                            <ul className="space-y-2">
+                            <li>
+                                <a href="#docs" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Contact
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#blog" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faq" className="text-sm hover:text-blue-400 transition-colors" style={{ color: '#9CA3AF' }}>
+                                Media Kit
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        {/* Copyright */}
+                        <div className="mt-8 text-center text-sm" style={{ color: '#9CA3AF' }}>
+                        LayerEdge © 2025 . All rights reserved.
+                        </div>
+                    </div>
+                    
+                    </footer>
+
+                    
         </>
     )
 }
