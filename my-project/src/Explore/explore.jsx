@@ -86,6 +86,24 @@ export function ExplorePage() {
                             <img className="w-[32px] h-[32px]" src="../../public/img/icon-7.webp" alt="" />
                         </div>
                     </div>
+                    <div className="w-[700px] h-[100px] bg-[#000] flex justify-center items-center rounded-xl shadow-lg mt-1 gap-4">
+                        <span>Protocols Aggregated by LayerEdge</span>
+                        <div className="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M0 0C8.83656 0 16 7.16344 16 16C7.16344 16 0 8.83656 0 0Z" fill="#30BF54" />
+                                <path d="M32 32C23.1634 32 16 24.8366 16 16C24.8366 16 32 23.1634 32 32Z" fill="#30BF54" />
+                                <path d="M16 16C16 11.5817 19.5817 8 24 8C24 12.4183 20.4183 16 16 16Z" fill="#30BF54" />
+                                <path d="M16 16C16 20.4183 12.4183 24 8 24C8 19.5817 11.5817 16 16 16Z" fill="#30BF54" />
+                            </svg>
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-1.webp" alt="" />
+                            <img className="w-[32px] h-[32px]"  src="../../public/img/icon-2.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-3.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-4.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-5.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-6.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-7.webp" alt="" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
