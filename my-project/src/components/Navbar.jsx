@@ -36,27 +36,27 @@ export function Navbar() {
             <div className="absolute top-28 left-0 w-full bg-black/80 text-white">
               <ul className="navbar-menu flex flex-col items-center py-4 space-y-4">
                 <li>
-                  <a href="/docs" className="hover:text-gray-400">
+                  <a href="/#/docs" className="hover:text-gray-400">
                     Docs
                   </a>
                 </li>
                 <li>
-                  <a href="/blog" className="hover:text-gray-400">
+                  <a href="/#/blog" className="hover:text-gray-400">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="/ecosystem" className="hover:text-gray-400">
+                  <a href="/#/ecosystem" className="hover:text-gray-400">
                     Ecosystem
                   </a>
                 </li>
                 <li>
-                  <a href="/Explore" className="hover:text-gray-400">
+                  <a href="/#/explore" className="hover:text-gray-400">
                     Explore
                   </a>
                 </li>
                 <a
-                  href="/dashboard"
+                  href="/#/dashboard"
                   className="text-white bg-transparent px-4 py-2 border border-gray-400 rounded-3xl hover:bg-gray-700"
                 >
                   Run a light node
@@ -73,29 +73,29 @@ export function Navbar() {
           </a>
           <ul className="navbar-menu flex space-x-6">
             <li>
-              <a href="/docs" className="hover:text-gray-400">
+              <a href="/#/docs" className="hover:text-gray-400">
               Docs
               </a>
             </li>
             <li>
-              <a href="/blog" className="hover:text-gray-400">
+              <a href="/#/blog" className="hover:text-gray-400">
               Blog
               </a>
             </li>
             <li>
-              <a href="/ecosystem" className="hover:text-gray-400">
+              <a href="/#/ecosystem" className="hover:text-gray-400">
                 Ecosystem
               </a>
             </li>
             <li>
-              <a href="/explore" className="hover:text-gray-400">
+              <a href="/#/explore" className="hover:text-gray-400">
               Explore
               </a>
             </li>
           </ul>
           <a
             style={{ color: "#fff" }}
-            href="/dashboard"
+            href="/#/dashboard"
             className="text-white bg-transparent px-4 py-2 border border-gray-400 rounded-3xl hover:bg-gray-700"
           >
             Run a light node
