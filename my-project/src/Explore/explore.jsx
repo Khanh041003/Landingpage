@@ -1,7 +1,16 @@
+import { useEffect, useState } from "react";
+import CountUp from "react-countup";
+
 export function ExplorePage() {
+    const [isshow, setShow] = useState(false);
+    useEffect(() => {
+        setShow(true);
+    }, [])
     return (
         <div className="bg-[#050507] min-h-screen flex flex-col bg-fixed bg-center bg-cover scroll-smooth" style={{
-            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2200 700'><style>rect { width: 118px; height: 118px; fill: rgb(4, 4, 6); stroke: rgb(19,19,19); }</style><rect x='2.5' y='2.5'/><rect x='125.5' y='2.5'/><rect x='248.5' y='2.5'/><rect x='371.5' y='2.5'/><rect x='494.5' y='2.5'/><rect x='617.5' y='2.5'/><rect x='740.5' y='2.5'/><rect x='863.5' y='2.5'/><rect x='986.5' y='2.5'/><rect x='1109.5' y='2.5'/><rect x='1232.5' y='2.5'/><rect x='1355.5' y='2.5'/><rect x='1478.5' y='2.5'/><rect x='1601.5' y='2.5'/><rect x='1724.5' y='2.5'/><rect x='2.5' y='125.5'/><rect x='125.5' y='125.5'/><rect x='248.5' y='125.5'/><rect x='371.5' y='125.5'/><rect x='494.5' y='125.5'/><rect x='617.5' y='125.5'/><rect x='740.5' y='125.5'/><rect x='863.5' y='125.5'/><rect x='986.5' y='125.5'/><rect x='1109.5' y='125.5'/><rect x='1232.5' y='125.5'/><rect x='1355.5' y='125.5'/><rect x='1478.5' y='125.5'/><rect x='1601.5' y='125.5'/><rect x='1724.5' y='125.5'/><rect x='2.5' y='248.5'/><rect x='125.5' y='248.5'/><rect x='248.5' y='248.5'/><rect x='371.5' y='248.5'/><rect x='494.5' y='248.5'/><rect x='617.5' y='248.5'/><rect x='740.5' y='248.5'/><rect x='863.5' y='248.5'/><rect x='986.5' y='248.5'/><rect x='1109.5' y='248.5'/><rect x='1232.5' y='248.5'/><rect x='1355.5' y='248.5'/><rect x='1478.5' y='248.5'/><rect x='1601.5' y='248.5'/><rect x='1724.5' y='248.5'/></svg>")`
+            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2200 400'><style>rect { width: 118px; height: 118px; fill: rgb(4, 4, 6); stroke: rgb(19,19,19); }</style><rect x='2.5' y='2.5'/><rect x='125.5' y='2.5'/><rect x='248.5' y='2.5'/><rect x='371.5' y='2.5'/><rect x='494.5' y='2.5'/><rect x='617.5' y='2.5'/><rect x='740.5' y='2.5'/><rect x='863.5' y='2.5'/><rect x='986.5' y='2.5'/><rect x='1109.5' y='2.5'/><rect x='1232.5' y='2.5'/><rect x='1355.5' y='2.5'/><rect x='1478.5' y='2.5'/><rect x='1601.5' y='2.5'/><rect x='1724.5' y='2.5'/><rect x='2.5' y='125.5'/><rect x='125.5' y='125.5'/><rect x='248.5' y='125.5'/><rect x='371.5' y='125.5'/><rect x='494.5' y='125.5'/><rect x='617.5' y='125.5'/><rect x='740.5' y='125.5'/><rect x='863.5' y='125.5'/><rect x='986.5' y='125.5'/><rect x='1109.5' y='125.5'/><rect x='1232.5' y='125.5'/><rect x='1355.5' y='125.5'/><rect x='1478.5' y='125.5'/><rect x='1601.5' y='125.5'/><rect x='1724.5' y='125.5'/><rect x='2.5' y='248.5'/><rect x='125.5' y='248.5'/><rect x='248.5' y='248.5'/><rect x='371.5' y='248.5'/><rect x='494.5' y='248.5'/><rect x='617.5' y='248.5'/><rect x='740.5' y='248.5'/><rect x='863.5' y='248.5'/><rect x='986.5' y='248.5'/><rect x='1109.5' y='248.5'/><rect x='1232.5' y='248.5'/><rect x='1355.5' y='248.5'/><rect x='1478.5' y='248.5'/><rect x='1601.5' y='248.5'/><rect x='1724.5' y='248.5'/></svg>")`,
+            
+            zIndex: -1,
         }}>
 
             {/* Navbar */}
@@ -38,37 +47,50 @@ export function ExplorePage() {
             <div className="mt-[150px] ">
                 <h1 className="text-white text-center text-4xl font-bold">LayerEdge Explorer</h1>
                 <div className="explore-content container mx-auto mt-10 flex flex-col justify-center items-center ">
-                    <div className="avange grid grid-cols-2 gap-3">
-                        <div className="total-batches flex justify-around items-center gap-10 w-[500px] h-[70px] bg-[#000] rounded-xl shadow-lg">
-                            <p className="text-5xl">43,509</p>
+                    <div className="avange grid grid-cols-2 gap-2 mt-10">
+                        <div className="total-batches flex justify-between p-4 items-center gap-10 w-[500px] h-[100px] bg-[#000] rounded-xl shadow-[0px_0px_15px_rgba(255,255,255,0.1)]">
+                            {
+                                isshow && (
+                                    <p className="text-3xl"><CountUp end={43509} duration={5} /></p>
+                                )
+                            }
+
                             <div className="flex items-center gap-2">
                                 <span>Total Batches</span>
                                 <i className="fa-solid fa-diagram-project"></i>
                             </div>
                         </div>
-                        <div className="total-batches flex justify-around items-center gap-10 w-[500px] h-[70px] bg-[#000] rounded-xl shadow-lg">
-                            <p className="text-5xl">43,509</p>
+                        <div className="verified-proofs flex justify-between p-4 items-center gap-10 w-[500px] h-[100px] bg-[#000] rounded-xl  shadow-[0px_0px_15px_rgba(255,255,255,0.1)]">
                             <div className="flex items-center gap-2">
-                                <span>Total Batches</span>
+                                <span>Verified Proofs</span>
+                                <i className="fa-solid fa-diagram-project"></i>
+                            </div>
+                            {
+                                isshow && (
+                                    <p className="text-3xl"><CountUp end={436194} duration={5} /></p>
+                                )
+                            }
+                        </div>
+                        <div className="total-batches flex justify-between p-4 items-center gap-10 w-[500px] h-[100px] bg-[#000] rounded-xl shadow-[0px_0px_15px_rgba(255,255,255,0.1)]">
+                            <p className="text-2xl">Ykjdahsfaghhqeh9</p>
+                            <div className="flex items-center gap-2">
+                                <span>Services Manager</span>
                                 <i className="fa-solid fa-diagram-project"></i>
                             </div>
                         </div>
-                        <div className="total-batches flex justify-around items-center gap-10 w-[500px] h-[70px] bg-[#000] rounded-xl shadow-lg">
-                            <p className="text-5xl">43,509</p>
+                        <div className="total-batches flex justify-between p-4 items-center gap-10 w-[500px] h-[100px] bg-[#000] rounded-xl shadow-[0px_0px_15px_rgba(255,255,255,0.1)]">
                             <div className="flex items-center gap-2">
-                                <span>Total Batches</span>
+                                <span>Total Gas Saved in $USD</span>
                                 <i className="fa-solid fa-diagram-project"></i>
                             </div>
-                        </div>
-                        <div className="total-batches flex justify-around items-center gap-10 w-[500px] h-[70px] bg-[#000] rounded-xl shadow-lg">
-                            <p className="text-5xl">43,509</p>
-                            <div className="flex items-center gap-2">
-                                <span>Total Batches</span>
-                                <i className="fa-solid fa-diagram-project"></i>
-                            </div>
+                            {
+                                isshow && (
+                                    <p className="text-3xl"><CountUp end={3770730} duration={5} /></p>
+                                )
+                            }
                         </div>
                     </div>
-                    <div className="w-[700px] h-[100px] bg-[#000] flex justify-center items-center rounded-xl shadow-lg mt-1 gap-4">
+                    <div className="w-[700px] h-[50px] bg-[#0c0c10] flex justify-center items-center rounded-xl shadow-lg mt-5 gap-4">
                         <span>Protocols Aggregated by LayerEdge</span>
                         <div className="flex gap-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -77,31 +99,20 @@ export function ExplorePage() {
                                 <path d="M16 16C16 11.5817 19.5817 8 24 8C24 12.4183 20.4183 16 16 16Z" fill="#30BF54" />
                                 <path d="M16 16C16 20.4183 12.4183 24 8 24C8 19.5817 11.5817 16 16 16Z" fill="#30BF54" />
                             </svg>
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-1.webp" alt="" />
-                            <img className="w-[32px] h-[32px]"  src="../../public/img/icon-2.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-3.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-4.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-5.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-6.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-7.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-1.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-2.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-3.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-4.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-5.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-6.webp" alt="" />
+                            <img className="w-[32px] h-[32px]" src="../../img/icon-7.webp" alt="" />
                         </div>
                     </div>
-                    <div className="w-[700px] h-[100px] bg-[#000] flex justify-center items-center rounded-xl shadow-lg mt-1 gap-4">
-                        <span>Protocols Aggregated by LayerEdge</span>
-                        <div className="flex gap-2 items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <path d="M0 0C8.83656 0 16 7.16344 16 16C7.16344 16 0 8.83656 0 0Z" fill="#30BF54" />
-                                <path d="M32 32C23.1634 32 16 24.8366 16 16C24.8366 16 32 23.1634 32 32Z" fill="#30BF54" />
-                                <path d="M16 16C16 11.5817 19.5817 8 24 8C24 12.4183 20.4183 16 16 16Z" fill="#30BF54" />
-                                <path d="M16 16C16 20.4183 12.4183 24 8 24C8 19.5817 11.5817 16 16 16Z" fill="#30BF54" />
-                            </svg>
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-1.webp" alt="" />
-                            <img className="w-[32px] h-[32px]"  src="../../public/img/icon-2.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-3.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-4.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-5.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-6.webp" alt="" />
-                            <img className="w-[32px] h-[32px]" src="../../public/img/icon-7.webp" alt="" />
+                    <div className="bg-[#000] flex justify-center items-center w-[700px] h-[50px] rounded-xl mt-5 gap-4 border-1 border-[#312e2e] mt-40">
+                        <span>Recent Batches</span>
+                        <div className="log">
+                            <span>Last updated: <span>22:50</span></span>
+                            <a href="#">View all</a>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@ export function Navbar() {
           <a href="/">
           <img src="/img/logo.png" alt="LayerEdge Logo" className="w-24" />
           </a>
-          <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
+          <button className="text-[#000]" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <XMarkIcon className="w-6 h-6" />
             ) : (
