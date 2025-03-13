@@ -254,3 +254,21 @@ nav ul {
   0% {transform: rotate(0deg);}
   100% {transform: rotate(900deg);}
 }
+
+.grid-background {
+  background-size: 100px 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full chiều rộng */
+  height: 100%; /* Full chiều cao */
+  background-image: linear-gradient(to right, rgba(159, 170, 170, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(162, 174, 174, 0.1) 1px, transparent 1px);
+  animation: flicker 5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
