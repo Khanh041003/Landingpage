@@ -11,7 +11,7 @@ export function ExplorePage() {
     
     return (
         <div className="bg-[#050507] min-h-screen flex flex-col bg-fixed bg-center bg-cover scroll-smooth" >
-            <div className="grid-background absolute inset-0"></div>
+            {/* <div className="grid-background absolute inset-0"></div> */}
             {/* Navbar */}
             <nav style={{backgroundColor:'#000'}} className="bg-[#000]/70 backdrop-blur-lg fixed top-0 left-0 w-full shadow-md p-4 flex justify-between items-center text-white">
             {/* Logo */}
@@ -74,7 +74,7 @@ export function ExplorePage() {
             <div className="mt-[120px] text-center px-4">
                 <h1 className="text-white text-3xl sm:text-4xl font-bold">LayerEdge Explorer</h1>
                 <div className="explore-content container mx-auto mt-10 flex flex-col items-center">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[1000px]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-[#fff] max-w-[1000px]">
                         {[{
                             label: "Total Batches", value: 43509
                         }, {
