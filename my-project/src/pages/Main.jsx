@@ -16,13 +16,13 @@ export function MainPage() {
           id: 2,
           time: "3:46:22 AM",
           date: "February 15, 2025",
-          description: "LayerEdge joins forces with leading tech companies.",
+          description: "LayerEdge Incentivized Testnet: Phase II Goes Live.",
         },
         {
           id: 3,
           time: "11:47:57 PM",
           date: "January 30, 2025",
-          description: "Enhanced security protocols implemented.",
+          description: "Scaling the Bitcoin-backed Internet: LayerEdge leverages RISC Zero’s zkVM and Boundless for Proof...",
         },
       ];
     const [activeTab, setActiveTab] = useState('all');
@@ -98,7 +98,7 @@ export function MainPage() {
     
     return (
         <>
-          <div className="App">
+          <div className="App  bg-[#000000] text-white">
                 {/* Menu điều hướng */}
                 <div className="relative w-full h-screen">
                     {/* Video Background */}
@@ -173,7 +173,7 @@ export function MainPage() {
                                 onClick={() => setActiveTab('ethereum')}
                                 className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
                                 activeTab === 'ethereum'
-                                    ? 'bg-[#2463EB] text-[#000000] shadow-lg'
+                                    ? 'bg-[#0D0D0D] text-[#000000] shadow-lg'
                                     : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
                                 }`}
                             >
@@ -183,7 +183,7 @@ export function MainPage() {
                                 onClick={() => setActiveTab('Provers')}
                                 className={`flex-shrink-0 py-2 sm:py-3 px-4 sm:px-8 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ease-in-out  hover:scale-105 ${
                                 activeTab === 'Provers'
-                                    ? 'bg-[#2463EB] text-[#000000] shadow-lg'
+                                    ? 'bg-[#0D0D0D] text-[#000000] shadow-lg'
                                     : 'bg-transparent border border-[#404040] text-[#A1A1A1] hover:text-[#FFFFFF] hover:border-[#FFFFFF]'
                                 }`}
                             >
@@ -207,7 +207,7 @@ export function MainPage() {
                         </section>
                     {/* section3 */}
                     
-                    <div className="flex flex-col items-center sm-mt-[100px] space-y-10 px-4">
+                    <div className="flex flex-col  items-center sm-mt-[100px] space-y-10 px-4">
                         <div className="bg-black text-white p-10 rounded-[20px] shadow-lg border-2 border-white max-w-[600px] w-full text-center">
                             <div className="flex justify-center items-center space-x-2">
                                 <h2 className="text-lg font-semibold">LayerEdge</h2>
@@ -233,30 +233,28 @@ export function MainPage() {
 
             <section className="py-12 bg-[#000000]">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-white-900 mb-8">What s New</h1>
+                <h1 className="text-4xl font-bold text-white mb-8">Whats New</h1>
                 
                 <div className="overflow-x-auto">
                   <table className="min-w-full bg-[#000000] rounded-lg shadow-md border-gray-300 mt-20 mb-30">
                     <thead>
-
                     </thead>
                     <tbody>
                       {newsItems.map((item) => (
                         <tr
                           key={item.id}
-                          className="border--collapse transition-colors duration-200"
+                          className="border border-gray-500 transition-colors duration-200" // Thêm border trắng
                         >
-                          
                           <td className="py-6 px-6 text-gray-600 border-gray-300">
                             {item.date}<br></br>
                             {item.time}
                           </td>
-                          <td className="py-4 px-6 sm:text-2xl md:text-3x1 text-gray-1000">
+                          <td className="py-4 px-6 sm:text-2xl md:text-3xl text-white">
                             {item.description}
                           </td>
-                          <td className="py-4 px-6 text-gray-900 font-medium">
+                          <td className="py-4 px-6 text-white font-medium">
                             <button className="bg-black"> 
-                                Learn More
+                              Learn More
                             </button>
                           </td>
                         </tr>
