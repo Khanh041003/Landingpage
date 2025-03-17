@@ -2,7 +2,7 @@
 
 const MainContent = () => {
   return (
-    <div className="flex-1 p-10 bg-gray-50">
+    <div className="flex-1 p-10 bg-white">
       <h1 className="text-4xl font-bold mb-6">Introduction To LayerEdge</h1>
       {/* Section 1 */}
       <div className="mb-8">
