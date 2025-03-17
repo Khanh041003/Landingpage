@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
+import { Playnode } from "../components/playnode";
 
 export function Dashboard() {
     const [url, setUrl] = useState("");
+
     const { isConnected } = useAccount();
     useEffect(() => {
         setUrl(window.location.pathname);
-    }, []);
+    }, []); 
     <ConnectButton.Custom>
         {({ account, chain, openConnectModal, openAccountModal, mounted }) => {
             const connected = mounted && account && chain;
@@ -23,16 +25,16 @@ export function Dashboard() {
         }}
     </ConnectButton.Custom>
     return (
-        <div className="grid grid-cols-12 h-screen flex">
+        <div className="grid grid-cols-12 h-screen flex text-[#fff]">
             {/* Cột trái - 2/12 */}
             <div className="left bg-[#000] col-span-2 text-left">
                 <div className="logo mb-[50px] mt-[50px] flex justify-center">
                     <img src="../../img/logo.png" alt="Logo" />
                 </div>
-                <div className="menu-control mb-[70px] ml-[30px]">
-                    <ul className="bg-black flex flex-col gap-4 text-[18px]">
+                <div className="menu-control mb-[70px] ml-[30px] ">
+                    <ul className=" flex flex-col gap-4 text-[18px]">
                         <li
-                            className={`flex items-center gap-2 cursor-pointer p-2 ${url === "/dashboard" ? "active" : ""
+                            className={`flex items-center cursor-pointer p-2 ${url === "/dashboard" ? "active" : ""
                                 }`}
                         >
                             <i className="fa-solid fa-house"></i>
@@ -129,8 +131,7 @@ export function Dashboard() {
                 <div className="dashboard-main w-full mt-[24px] ml-[24px] flex flex-col  items-center">
                     {isConnected ? (
                         <div className="dashboard-content">
-                            <h1 className="text-[20px]">Dashboard</h1>
-                            <p>Welcome! Your wallet is connected.</p>
+                            <Playnode/>
                         </div>
                     ) : (
                         <div className="announcement bg-[#3d3d3a] w-[400px] h-[300px] rounded-xl flex flex-col items-center justify-around">
