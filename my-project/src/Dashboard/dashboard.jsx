@@ -5,141 +5,87 @@ import { Playnode } from "../components/playnode";
 
 export function Dashboard() {
     const [url, setUrl] = useState("");
-
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { isConnected } = useAccount();
+
     useEffect(() => {
         setUrl(window.location.pathname);
-    }, []); 
-    <ConnectButton.Custom>
-        {({ account, chain, openConnectModal, openAccountModal, mounted }) => {
-            const connected = mounted && account && chain;
+    }, []);
 
-            return (
-                <button
-                    onClick={connected ? openAccountModal : openConnectModal}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-                >
-                    {connected ? `Connected: ${account.displayName}` : "Connect Wallet"}
-                </button>
-            );
-        }}
-    </ConnectButton.Custom>
     return (
-        <div className="grid grid-cols-12 h-screen flex text-[#fff]">
-            {/* Cột trái - 2/12 */}
-            <div className="left bg-[#000] col-span-2 text-left">
-                <div className="logo mb-[50px] mt-[50px] flex justify-center">
-                    <img src="../../img/logo.png" alt="Logo" />
+        <div className="flex h-screen bg-black text-white">
+            {/* Sidebar - Responsive */}
+            <div className={`fixed md:relative bg-black w-[250px] md:w-[200px] h-full transition-transform z-50 border-r-1 border-gray-700 transform overflow-visible
+                ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
+                
+                {/* Đóng menu trên mobile */}
+                <button className="absolute top-4 right-4 md:hidden text-white text-2xl" onClick={() => setIsMenuOpen(false)}>
+                    ✖
+                </button>
+
+                <div className="logo my-6 flex justify-center">
+                    <img src="../../img/logo.png" alt="Logo" className="w-24" />
                 </div>
-                <div className="menu-control mb-[70px] ml-[30px] ">
-                    <ul className=" flex flex-col gap-4 text-[18px]">
-                        <li
-                            className={`flex items-center cursor-pointer p-2 ${url === "/dashboard" ? "active" : ""
-                                }`}
-                        >
-                            <i className="fa-solid fa-house"></i>
-                            <span>Dashboard</span>
-                        </li>
-                        <li
-                            className={`flex items-center justify-between ${url === "/tasks" ? "active" : ""
-                                } ${!isConnected ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
-                            onClick={(e) => !isConnected && e.preventDefault()}
-                        >
-                            <div className="flex items-center gap-2">
-                                <i className="fa-solid fa-list-check"></i>
-                                <span>Tasks</span>
-                            </div>
-                            {!isConnected && <i className="fa-solid fa-lock text-gray-400"></i>}
-                        </li>
 
-                        <li
-                            className={`flex items-center justify-between ${url === "/proofs" ? "active" : ""
-                                } ${!isConnected ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
-                            onClick={(e) => !isConnected && e.preventDefault()}
-                        >
-                            <div className="flex items-center gap-2">
-                                <i className="fa-solid fa-building-lock"></i>
-                                <span>Proofs</span>
-                            </div>
-                            {!isConnected && <i className="fa-solid fa-lock text-gray-400"></i>}
+                {/* Navigation Menu */}
+                <div style={{backgroundColor:'#000'}} className="flex flex-col  text-[16px] px-6">
+                    <ul className="">
+                        <li className={`p-2  items-center cursor-pointer ${url === "/dashboard" ? "text-blue-400" : ""}`}>
+                            <i className="fa-solid fa-house mr-2"></i> Dashboard
                         </li>
-
-                        <li
-                            className={`flex items-center gap-2 cursor-pointer ${url === "/referrals" ? "active" : ""
-                                }`}
-                        >
-                            <i className="fa-solid fa-handshake-simple"></i>
-                            <span>Referrals</span>
+                        <li className={`p-2  items-center cursor-pointer ${!isConnected ? "opacity-50" : ""}`}
+                            onClick={(e) => !isConnected && e.preventDefault()}>
+                            <i className="fa-solid fa-list-check mr-2"></i> Tasks
+                        </li>
+                        <li className={`p-2  items-center cursor-pointer ${!isConnected ? "opacity-50" : ""}`}
+                            onClick={(e) => !isConnected && e.preventDefault()}>
+                            <i className="fa-solid fa-building-lock mr-2"></i> Proofs
+                        </li>
+                        <li className="p-2  items-center cursor-pointer">
+                            <i className="fa-solid fa-handshake-simple mr-2"></i> Referrals
                         </li>
                     </ul>
-                </div>
-                <div className="menu-help ml-[30px]">
-                    <ul className="bg-black flex flex-col gap-4  text-[18px]">
-                        <li className="flex items-center gap-2 cursor-pointer hover:text-gray-300 p-2">
-                            <i className="fa-solid fa-bars"></i>
-                            <span>FAQ</span>
-                        </li>
-                        <li className="flex items-center justify-between cursor-pointer hover:text-gray-300">
-                            <div className="flex items-center gap-2">
-                                <i className="fa-solid fa-magnifying-glass-dollar"></i>
-                                <span>Explorer</span>
-                            </div>
-                        </li>
-                        <li className="flex items-center justify-between cursor-pointer hover:text-gray-300" onClick={() => { window.location.href = "/" }}>
-                            <div className="flex items-center gap-2">
-                                <i className="fa-solid fa-link"></i>
-                                <span>Website</span>
-                            </div>
-                        </li>
-                    </ul>
+
+                    {/* Help Menu */}
+                    <div className="mt-6 border-t border-gray-700 pt-4 flex flex-col">
+                        <ul className="space-y-4">
+                            <li className="p-2  items-center cursor-pointer hover:text-gray-300">
+                                <i className="fa-solid fa-bars mr-2"></i> FAQ
+                            </li>
+                            <li className="p-2  items-center cursor-pointer hover:text-gray-300">
+                                <i className="fa-solid fa-magnifying-glass-dollar mr-2"></i> Explorer
+                            </li>
+                            <li className="p-2  items-center cursor-pointer hover:text-gray-300"
+                                onClick={() => { window.location.href = "/" }}>
+                                <i className="fa-solid fa-link mr-2"></i> Website
+                            </li>
+                        </ul>
+                        <ConnectButton/>
+                    </div>
                 </div>
             </div>
 
-            {/* Cột phải - 10/12 */}
-            <div className="bg-[#000] col-span-10">
-                <div className="dashboard-header mt-[70px]">
-                    {isConnected ? (
-                        <div className="flex items-center justify-between p-2 border-1 rounded-xl border-[#3d3d3a]">
-                            <ul className="dashboard-nav flex gap-4 items-center">
-                                <div className="flex  w-[300px] p-3 rounded-lg border border-[#9d9d8f] shadow-md transition-all hover:shadow-lg gap-2">
-                                    <li className="flex items-center gap-2 font-semibold">
-                                        <i className="fa-solid fa-users text-blue-500"></i> Referals
-                                    </li>
-                                    <li className="text-blue-400 cursor-pointer hover:underline transition-all">
-                                        - Copy Referral Code
-                                    </li>
-                                </div>
-
-                                <div className="flex  w-[300px] p-3 rounded-lg border border-[#9d9d8f] shadow-md transition-all hover:shadow-lg gap-2">
-                                    <li className="flex items-center gap-2 font-semibold">
-                                        <i className="fa-solid fa-fire text-red-500"></i> Day streak
-                                    </li>
-                                    <li className="flex items-center gap-2 font-semibold cursor-pointer hover:text-yellow-500 transition-all">
-                                        <i className="fa-solid fa-gift text-yellow-400"></i> Claim Reward
-                                    </li>
-                                </div>
-                            </ul>
-                            <ConnectButton />
-                        </div>
-                    ) : (
-                        <div className="flex justify-end items-center mr-[24px]">
-                            {/* <ConnectButton label="Connect Wallet" /> */}
-                        </div>
-                    )}
+            {/* Main Content */}
+            <div className="flex-10 bg-[#000] p-10">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-6">
+                    {/* Button mở menu trên mobile */}
+                    <button className="md:hidden text-white text-2xl" onClick={() => setIsMenuOpen(true)}>
+                        ☰
+                    </button>
                 </div>
-                {/* Trang Dashboard */}
-                <div className="dashboard-main w-full mt-[24px] ml-[24px] flex flex-col  items-center">
+
+                {/* Dashboard Content */}
+                <div className="flex flex-col items-center jsutify-center z-100 ">
                     {isConnected ? (
-                        <div className="dashboard-content">
-                            <Playnode/>
+                        <div className="dashboard-content w-full">
+                            <Playnode />
                         </div>
                     ) : (
-                        <div className="announcement bg-[#3d3d3a] w-[400px] h-[300px] rounded-xl flex flex-col items-center justify-around">
-                            <div className="flex flex-col items-center gap-3">
-                                <h1 className="text-[20px]">Connect Wallet</h1>
-                                <p>Please connect your wallet to continue</p>
-                            </div>
-                            <ConnectButton />
+                        <div className="announcement bg-[#3d3d3a] w-full max-w-[400px] overflow-visible flex-shrink-0 h-[300px] rounded-xl flex flex-col items-center justify-center p-4 text-center">
+                            <h1 className="text-[20px]">Connect Wallet</h1>
+                            <p>Please connect your wallet to continue</p>
+                            <ConnectButton/>
                         </div>
                     )}
                 </div>
