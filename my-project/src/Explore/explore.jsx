@@ -90,7 +90,7 @@ export function ExplorePage() {
                             Protocols Aggregated by LayerEdge
                             <div className="flex gap-2 items-center">
                                 {[1, 2, 3, 4, 5, 6, 7].map((num) => (
-                                    <img key={num} className="w-[30px]" src={`../../public/img/icon-${num}.webp`} alt="as" />
+                                    <img key={num} className="w-[30px] max-w-[20px]" src={`../../public/img/icon-${num}.webp`} alt="as" />
                                 ))}
                             </div>
                         </div>

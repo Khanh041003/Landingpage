@@ -19,11 +19,11 @@ export function Navbar() {
     <nav className="navbar bg-black/80 text-white fixed top-0 left-0 w-full shadow-md">
       {isMobile ? (
         // Mobile Navbar
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-5 flex justify-between items-center overflow-hidden">
           <a href="/">
           <img src="/img/logo.png" alt="LayerEdge Logo" className="w-24" />
           </a>
-          <button className="text-[#000]" onClick={() => setIsOpen(!isOpen)}>
+          <button className="text-[#fff]" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <XMarkIcon className="w-6 h-6" />
             ) : (
