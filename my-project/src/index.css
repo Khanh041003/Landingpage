@@ -1,0 +1,11 @@
+/* index.css */
+.no-scrollbar {
+    /* Ẩn thanh cuộn trên Firefox */
+    scrollbar-width: none;
+    /* Ẩn thanh cuộn trên Chrome, Edge, Safari */
+    -ms-overflow-style: none; /* Internet Explorer và Edge */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn trên Chrome, Safari */
+  }
